@@ -74,7 +74,7 @@ const Home = () => {
             A passionate{" "}
             <span className="text-amber-400">Frontend Developer</span>
           </p>
-          <div className="flex gap-3">
+          <div className="flex flex-col md:flex-row gap-2">
             <Link to="/portfolio">
               <motion.button
                 className="mt-6 px-6 py-3 cursor-pointer bg-amber-500 rounded-lg text-lg font-semibold hover:bg-amber-600 transition"
@@ -88,7 +88,7 @@ const Home = () => {
               download="Okpalanweze_Chijindu.pdf"
             >
               <motion.button
-                className="mt-6 px-6 py-3 cursor-pointer bg-blue-500 rounded-lg text-lg font-semibold hover:bg-blue-600 transition"
+                className="mt-6 px-4 py-3 cursor-pointer bg-blue-500 rounded-lg text-lg font-semibold hover:bg-blue-600 transition"
                 whileHover={{ scale: 1.05 }}
               >
                 View My Resume

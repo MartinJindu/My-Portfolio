@@ -66,7 +66,7 @@ const Portfolio = () => {
             />
             <div className="p-6">
               <h3 className="text-2xl font-semibold">{project.name}</h3>
-              <p className="mt-2 text-gray-400">{project.description}</p>
+              <p className="mt-2 text-gray-300">{project.description}</p>
             </div>
             <motion.div
               whileHover={{ x: 5 }}
