@@ -57,12 +57,12 @@ const Home = () => {
   });
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 to-gray-800  text-white">
+    <div className=" bg-gradient-to-br from-gray-900 to-gray-800  text-white">
       {/* Hero Section */}
-      <section className="h-screen flex items-center justify-center text-center md:text-left px-6 md:px-12 space-y-10 md:space-y-0 md:space-x-16">
+      <section className="h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 space-y-6">
         <div>
           <motion.h1
-            className="text-5xl md:text-6xl font-bold"
+            className="text-4xl sm:text-5xl md:text-6xl font-bold"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 2 }}
@@ -70,14 +70,14 @@ const Home = () => {
             <span className="text-blue-500">Hi, I'm</span>{" "}
             <span className="text-amber-500">Okpalanweze Chijindu I.</span>
           </motion.h1>
-          <p className="mt-10 font-bold text-lg md:text-xl text-gray-300">
+          <p className="mt-6 font-semibold text-lg sm:text-xl text-gray-300">
             A passionate{" "}
             <span className="text-amber-400">Frontend Developer</span>
           </p>
-          <div className="flex flex-col md:flex-row gap-2">
+          <div className="flex flex-col sm:flex-row gap-2">
             <Link to="/portfolio">
               <motion.button
-                className="mt-6 px-6 py-3 cursor-pointer bg-amber-500 rounded-lg text-lg font-semibold hover:bg-amber-600 transition"
+                className="mt-4 px-4 sm:px-6 py-3 bg-amber-500 rounded-lg text-base sm:text-lg font-semibold hover:bg-amber-600 transition"
                 whileHover={{ scale: 1.05 }}
               >
                 View My Work
@@ -88,7 +88,7 @@ const Home = () => {
               download="Okpalanweze_Chijindu.pdf"
             >
               <motion.button
-                className="mt-6 px-4 py-3 cursor-pointer bg-blue-500 rounded-lg text-lg font-semibold hover:bg-blue-600 transition"
+                className="mt-4 px-4 sm:px-6 py-3 bg-blue-500 rounded-lg text-base sm:text-lg font-semibold hover:bg-blue-600 transition"
                 whileHover={{ scale: 1.05 }}
               >
                 View My Resume
@@ -101,40 +101,39 @@ const Home = () => {
       {/* About Section */}
       <section
         ref={aboutRef}
-        className="min-h-[700px] py-16 flex items-center px-6 md:px-12 bg-gray-900"
+        className="h-[700px] py-16 flex flex-col justify-center items-center px-4 sm:px-6 md:px-12 bg-gray-900"
       >
         <motion.div
-          className="max-w-5xl mx-auto flex flex-col md:flex-row items-center md:items-start space-y-12 md:space-y-0 md:space-x-16"
+          className="w-full max-w-4xl flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-12"
           initial={{ opacity: 0, y: 50 }}
           animate={aboutInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1 }}
         >
-          {/* Animated Image Card */}
           <motion.div
             className="relative transition-transform duration-300 hover:scale-105"
             initial={{ opacity: 0, x: -50 }}
             animate={aboutInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <div className="absolute inset-0 bg-blue-400 blur-3xl opacity-30"></div>
             <div className="relative p-1 bg-white bg-opacity-10 backdrop-blur-md shadow-xl rounded-lg">
               <img
                 src={heroImg}
                 alt="Profile"
-                className="min-w-2xs h-80 object-cover rounded-lg shadow-lg border-4 border-gray-700"
+                className="w-[250px] sm:w-[300px] h-auto object-cover rounded-lg shadow-lg border-4 border-gray-700"
               />
             </div>
           </motion.div>
 
-          {/* Text Content */}
           <motion.div
-            className="text-center md:text-left"
+            className="text-center md:text-left w-full"
             initial={{ opacity: 0, x: 50 }}
             animate={aboutInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 2, delay: 0.4 }}
           >
-            <h2 className="text-4xl font-bold text-white">About Me</h2>
-            <p className="mt-4 text-gray-300 text-lg leading-relaxed">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white">
+              About Me
+            </h2>
+            <p className="mt-4 text-gray-300 text-base sm:text-lg leading-relaxed">
               I'm a passionate{" "}
               <strong className="text-amber-500">Frontend Developer </strong>{" "}
               specializing in building modern, scalable applications using the
@@ -150,7 +149,7 @@ const Home = () => {
             </p>
 
             <motion.button
-              className="mt-6 px-6 py-3 cursor-pointer bg-amber-500 rounded-lg text-lg hover:bg-amber-600 transition"
+              className="mt-6 px-4 py-3 bg-amber-500 rounded-lg text-base sm:text-lg hover:bg-amber-600 transition"
               whileHover={{ scale: 1.05 }}
               onClick={() => navigate("/about")}
             >
@@ -192,15 +191,15 @@ const Home = () => {
       {/* Projects Section */}
       <section ref={projectsRef} className="bg-gray-900 py-16 px-6 md:px-12">
         <h2 className="text-4xl font-bold text-center">Projects</h2>
-        <div className="mt-8 grid md:grid-cols-3 gap-6">
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <motion.div
               key={index}
               className="bg-gray-800 p-3 rounded-b-lg hover:shadow-lg transition"
               initial={{ opacity: 0, y: 50 }}
               animate={projectsInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 1, delay: index * 0.4 }}
-              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 1, delay: index * 0.3 }}
+              whileHover={{ scale: 1.1 }}
             >
               <img
                 src={project.img}
