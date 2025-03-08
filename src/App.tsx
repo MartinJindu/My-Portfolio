@@ -4,6 +4,7 @@ import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import Portfolio from "./Pages/Portfolio";
 import SharedLayout from "./components/SharedLayout";
+import NotFound from "./Pages/NotFound";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="portfolio" element={<Portfolio />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
