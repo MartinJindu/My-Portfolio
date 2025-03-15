@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import heroImg from "../assets/my_img.jpg";
 import { useEffect } from "react";
 import { projects } from "../components/data";
+import Contact from "./Contact";
 
 const skills = [
   {
@@ -160,7 +161,7 @@ const Home = () => {
       </section>
 
       {/* Skills Section */}
-      <section ref={skillsRef} className=" py-16 px-6 md:px-12">
+      <section ref={skillsRef} className=" py-32 px-6 md:px-12">
         <h2 className="text-4xl font-bold text-center">My Skills</h2>
         <div className="mt-8 space-y-6">
           {skills.map((skill, index) => (
@@ -189,7 +190,7 @@ const Home = () => {
       </section>
 
       {/* Projects Section */}
-      <section ref={projectsRef} className="bg-gray-900 py-16 px-6 md:px-12">
+      <section ref={projectsRef} className="bg-gray-900 py-32 px-6 md:px-12">
         <h2 className="text-4xl font-bold text-center">Projects</h2>
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {projects.map((project, index) => (
@@ -219,16 +220,8 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 text-center">
-        <h2 className="text-4xl font-bold">Let's Work Together</h2>
-        <p className="mt-4 text-gray-300">
-          I'm open to collaborations and freelance projects.
-        </p>
-        <Link to="/contact">
-          <button className="mt-6 px-6 py-3 cursor-pointer bg-amber-500 rounded-lg text-lg hover:bg-amber-600 transition">
-            Get in Touch
-          </button>
-        </Link>
+      <section className="py-16">
+        <Contact />
       </section>
     </div>
   );
