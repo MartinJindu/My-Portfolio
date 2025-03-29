@@ -85,7 +85,7 @@ const Home = () => {
               </motion.button>
             </Link>
             <a
-              href="/Okpalanweze_Chijindu.pdf"
+              href="/Okpalanweze Chijindu Resume1.pdf"
               download="Okpalanweze_Chijindu.pdf"
             >
               <motion.button
