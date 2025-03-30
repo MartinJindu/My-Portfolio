@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaReact, FaNodeJs, FaJs } from "react-icons/fa";
-import { SiNextdotjs, SiTypescript } from "react-icons/si";
 import { useInView } from "react-intersection-observer";
 import { useNavigate } from "react-router-dom";
 import heroImg from "../assets/my_img.jpg";
@@ -9,34 +7,8 @@ import { useEffect } from "react";
 import { projects } from "../components/data";
 import Contact from "./Contact";
 
-const skills = [
-  {
-    name: "React.js",
-    level: "90%",
-    icon: <FaReact className="text-blue-400 text-3xl" />,
-  },
-  {
-    name: "Next.js",
-    level: "85%",
-    icon: <SiNextdotjs className="text-gray-300 text-3xl" />,
-  },
-  {
-    name: "TypeScript",
-    level: "85%",
-    icon: <SiTypescript className="text-blue-400 text-3xl" />,
-  },
-  {
-    name: "JavaScript",
-    level: "85%",
-    icon: <FaJs className="text-yellow-400 text-3xl" />,
-  },
-
-  {
-    name: "Node.js",
-    level: "70%",
-    icon: <FaNodeJs className="text-green-500 text-3xl" />,
-  },
-];
+import Skills from "../components/Skills";
+import Technologies from "../components/Technologies";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -44,10 +16,6 @@ const Home = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const { ref: skillsRef, inView: skillsInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.3,
-  });
   const { ref: projectsRef, inView: projectsInView } = useInView({
     triggerOnce: true,
     threshold: 0.2,
@@ -72,8 +40,7 @@ const Home = () => {
             <span className="text-amber-500">Okpalanweze Chijindu I.</span>
           </motion.h1>
           <p className="mt-6 font-semibold text-lg sm:text-xl text-gray-300">
-            A passionate{" "}
-            <span className="text-amber-400">Frontend Developer</span>
+            <span className="text-blue-400">Frontend Developer</span>
           </p>
           <div className="flex flex-col sm:flex-row gap-2">
             <Link to="/portfolio">
@@ -112,8 +79,8 @@ const Home = () => {
         >
           <motion.div
             className="relative transition-transform duration-300 hover:scale-105"
-            initial={{ opacity: 0, x: -50 }}
-            animate={aboutInView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: -50 }}
+            animate={aboutInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1, delay: 0.2 }}
           >
             <div className="relative p-1 bg-white bg-opacity-10 backdrop-blur-md shadow-xl rounded-lg">
@@ -127,8 +94,8 @@ const Home = () => {
 
           <motion.div
             className="text-center md:text-left w-full"
-            initial={{ opacity: 0, x: 50 }}
-            animate={aboutInView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 50 }}
+            animate={aboutInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 2, delay: 0.4 }}
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-white">
@@ -160,43 +127,23 @@ const Home = () => {
         </motion.div>
       </section>
 
+      <section className=" py-32 px-6 md:px-12">
+        <Technologies />
+      </section>
+
       {/* Skills Section */}
-      <section ref={skillsRef} className=" py-32 px-6 md:px-12">
-        <h2 className="text-4xl font-bold text-center">My Skills</h2>
-        <div className="mt-8 space-y-6">
-          {skills.map((skill, index) => (
-            <motion.div
-              key={index}
-              className="flex items-center gap-4"
-              initial={{ opacity: 0, x: -50 }}
-              animate={skillsInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 1.5, delay: index * 0.3 }}
-            >
-              {skill.icon}
-              <div className="w-full">
-                <p className="text-lg">{skill.name}</p>
-                <div className="w-full bg-gray-800 rounded-full h-4">
-                  <motion.div
-                    className="bg-amber-500 h-4 rounded-full"
-                    initial={{ width: "0%" }}
-                    animate={skillsInView ? { width: skill.level } : {}}
-                    transition={{ duration: 2 }}
-                  />
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+      <section className=" py-32 px-6 md:px-12">
+        <Skills />
       </section>
 
       {/* Projects Section */}
       <section ref={projectsRef} className="bg-gray-900 py-32 px-6 md:px-12">
-        <h2 className="text-4xl font-bold text-center">Projects</h2>
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <h2 className="text-4xl font-bold text-center">My Portfolio</h2>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              className="bg-gray-800 p-3 rounded-b-lg hover:shadow-lg transition"
+              className="flex flex-col bg-gray-800 justify-between p-3 rounded-b-lg hover:shadow-lg transition"
               initial={{ opacity: 0, y: 50 }}
               animate={projectsInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: index * 0.3 }}
@@ -207,13 +154,15 @@ const Home = () => {
                 alt={project.name}
                 className="w-full object-cover"
               />
-              <h3 className="text-2xl font-semibold">{project.name}</h3>
-              <Link
-                to="/portfolio"
-                className="text-amber-400 mt-2 inline-block"
-              >
-                View Project →
-              </Link>
+              <div>
+                <h3 className="text-2xl font-semibold">{project.name}</h3>
+                <Link
+                  to="/portfolio"
+                  className="text-amber-400 mt-2 inline-block"
+                >
+                  View Project →
+                </Link>
+              </div>
             </motion.div>
           ))}
         </div>
