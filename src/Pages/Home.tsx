@@ -9,6 +9,7 @@ import Contact from "./Contact";
 
 import Skills from "../components/Skills";
 import Technologies from "../components/Technologies";
+import { BackgroundBeamsWithCollision } from "../components/ui/background-beams-with-collision";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -28,44 +29,45 @@ const Home = () => {
   return (
     <div className=" bg-gradient-to-br from-gray-900 to-gray-800  text-white">
       {/* Hero Section */}
-      <section className="h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 space-y-6">
-        <div>
-          <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl font-bold"
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 2 }}
-          >
-            <span className="text-blue-500">Hi, I'm</span>{" "}
-            <span className="text-amber-500">Okpalanweze Chijindu I.</span>
-          </motion.h1>
-          <p className="mt-6 font-semibold text-lg sm:text-xl text-gray-300">
-            <span className="text-blue-400">Frontend Developer</span>
-          </p>
-          <div className="flex flex-col sm:flex-row gap-2">
-            <Link to="/portfolio">
-              <motion.button
-                className="mt-4 px-4 sm:px-6 py-3 bg-amber-500 rounded-lg text-base sm:text-lg font-semibold hover:bg-amber-600 transition"
-                whileHover={{ scale: 1.05 }}
-              >
-                View My Work
-              </motion.button>
-            </Link>
-            <a
-              href="/Okpalanweze Chijindu Resume1.pdf"
-              download="Okpalanweze_Chijindu.pdf"
+      <BackgroundBeamsWithCollision className="h-screen">
+        <section className=" flex flex-col items-center justify-center px-4 sm:px-6 md:px-12 space-y-6">
+          <div>
+            <motion.h1
+              className="text-4xl sm:text-5xl md:text-6xl font-bold"
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 2 }}
             >
-              <motion.button
-                className="mt-4 px-4 sm:px-6 py-3 bg-blue-500 rounded-lg text-base sm:text-lg font-semibold hover:bg-blue-600 transition"
-                whileHover={{ scale: 1.05 }}
+              <span className="text-blue-500">Hi, I'm</span>{" "}
+              <span className="text-amber-500">Okpalanweze Chijindu I.</span>
+            </motion.h1>
+            <p className="mt-6 font-semibold text-lg sm:text-xl text-gray-300">
+              <span className="text-blue-400">Frontend Developer</span>
+            </p>
+            <div className="flex flex-col sm:flex-row gap-2">
+              <Link to="/portfolio">
+                <motion.button
+                  className="mt-4 px-4 sm:px-6 py-3 bg-amber-500 rounded-lg text-base sm:text-lg font-semibold hover:bg-amber-600 transition"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  View My Work
+                </motion.button>
+              </Link>
+              <a
+                href="/Okpalanweze Chijindu Resume1.pdf"
+                download="Okpalanweze_Chijindu.pdf"
               >
-                View My Resume
-              </motion.button>
-            </a>
+                <motion.button
+                  className="mt-4 px-4 sm:px-6 py-3 bg-blue-500 rounded-lg text-base sm:text-lg font-semibold hover:bg-blue-600 transition"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  View My Resume
+                </motion.button>
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
-
+        </section>
+      </BackgroundBeamsWithCollision>
       {/* About Section */}
       <section
         ref={aboutRef}
