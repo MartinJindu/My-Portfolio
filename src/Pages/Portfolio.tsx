@@ -10,7 +10,7 @@ const Portfolio = () => {
   }, []);
   return (
     <motion.div
-      className="bg-gradient-to-br from-gray-900 to-gray-800 text-white min-h-screen px-6 md:px-12 py-16"
+      className="bg-gradient-to-br from-gray-900 to-gray-800 text-white min-h-screen px-6 md:px-12 py-16 pt-24 md:pt-5"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

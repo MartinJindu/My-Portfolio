@@ -12,7 +12,7 @@ const About = () => {
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center px-6 md:px-16 lg:px-32 bg-gradient-to-br from-gray-900 to-gray-800 text-white py-12">
+    <div className="relative flex flex-col items-center px-6 md:px-16 lg:px-32 bg-gradient-to-br from-gray-900 to-gray-800 text-white py-12 pt-24 md:pt-5">
       {/* Background Animation */}
       <Particles
         className="absolute inset-0 -z-10"
