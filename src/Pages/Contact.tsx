@@ -45,7 +45,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white min-h-screen flex flex-col items-center justify-center px-6 md:px-12 py-16">
+    <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white min-h-screen flex flex-col items-center justify-center px-6 md:px-12 py-16 pt-24 md:pt-0">
       {/* Header */}
       <motion.h1
         className="text-5xl md:text-6xl font-bold text-center"
