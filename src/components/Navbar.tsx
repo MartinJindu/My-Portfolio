@@ -1,93 +1,81 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import myPic from "../assets/my_img.jpg";
-import { useNavigate } from "react-router-dom";
-import { FiMenu, FiX } from "react-icons/fi"; // Modern icons
 
-const Navbar = () => {
-  const navigate = useNavigate();
-  const [menuOpen, setMenuOpen] = useState(false);
+("use client");
+import {
+  Navbar,
+  NavBody,
+  NavItems,
+  MobileNav,
+  NavbarLogo,
+  MobileNavHeader,
+  MobileNavToggle,
+  MobileNavMenu,
+} from "./ui/resizable-navbar";
+
+function NavbarApp() {
+  const navItems = [
+    {
+      name: "Home",
+      link: "/",
+    },
+    {
+      name: "About",
+      link: "/about",
+    },
+    {
+      name: "Portfolio",
+      link: "/portfolio",
+    },
+    {
+      name: "Contact",
+      link: "/contact",
+    },
+  ];
+
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className=" bg-gray-900 text-white px-6 md:px-12 py-4 shadow-md">
-      <div className="max-w-7xl mx-auto flex flex-grow justify-between items-center">
-        {/* Logo Section */}
-        <div
-          className="flex items-center cursor-pointer"
-          onClick={() => navigate("/")}
-        >
-          <div className="h-14 w-14 bg-amber-500 rounded-full">
-            <img
-              src={myPic}
-              alt="Profile"
-              className=" object-cover rounded-full shadow-lg border-2 hover:border-amber-400"
-            />
-          </div>
-          <span className="ml-3 text-xl font-bold hover:text-amber-400">
-            My Portfolio
-          </span>
-        </div>
-
+    <div className="relative w-full ">
+      <Navbar className="fixed top-0 max-w-4xl mx-auto">
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-8 text-lg">
-          <Link to="/" className="hover:text-amber-400 transition">
-            Home
-          </Link>
-          <Link to="/about" className="hover:text-amber-400 transition">
-            About
-          </Link>
-          <Link to="/portfolio" className="hover:text-amber-400 transition">
-            Portfolio
-          </Link>
-          <Link to="/contact" className="hover:text-amber-400 transition">
-            Contact
-          </Link>
-        </div>
+        <NavBody>
+          <NavbarLogo />
+          <NavItems items={navItems} />
+        </NavBody>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-2xl focus:outline-none"
-        >
-          {menuOpen ? <FiX /> : <FiMenu />}
-        </button>
-      </div>
+        {/* Mobile Navigation */}
+        <MobileNav>
+          <MobileNavHeader className="md:px-10">
+            <NavbarLogo />
+            <MobileNavToggle
+              isOpen={isMobileMenuOpen}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            />
+          </MobileNavHeader>
 
-      {/* Mobile Navigation Menu */}
-      {menuOpen && (
-        <div className="md:hidden flex flex-col items-center bg-gray-800 py-4 space-y-4 text-lg">
-          <Link
-            to="/"
-            className="hover:text-amber-400 transition"
-            onClick={() => setMenuOpen(false)}
+          <MobileNavMenu
+            isOpen={isMobileMenuOpen}
+            onClose={() => setIsMobileMenuOpen(false)}
+            className="bg-gray-800"
           >
-            Home
-          </Link>
-          <Link
-            to="/about"
-            className="hover:text-amber-400 transition"
-            onClick={() => setMenuOpen(false)}
-          >
-            About
-          </Link>
-          <Link
-            to="/portfolio"
-            className="hover:text-amber-400 transition"
-            onClick={() => setMenuOpen(false)}
-          >
-            Portfolio
-          </Link>
-          <Link
-            to="/contact"
-            className="hover:text-amber-400 transition"
-            onClick={() => setMenuOpen(false)}
-          >
-            Contact
-          </Link>
-        </div>
-      )}
-    </nav>
+            {navItems.map((item, idx) => (
+              <Link
+                key={`mobile-link-${idx}`}
+                to={item.link}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="relative text-white dark:text-neutral-300"
+              >
+                <span className="block">{item.name}</span>
+              </Link>
+            ))}
+          </MobileNavMenu>
+        </MobileNav>
+      </Navbar>
+
+      {/* Navbar */}
+    </div>
   );
-};
+}
 
-export default Navbar;
+export default NavbarApp;
