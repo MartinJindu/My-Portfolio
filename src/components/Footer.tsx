@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
 const Footer = () => {
@@ -33,7 +34,7 @@ const Footer = () => {
           whileHover={{ scale: 1.2 }}
           className="text-xl text-gray-400 hover:text-white transition"
         >
-          <FaTwitter />
+          <FaXTwitter />
         </motion.a>
         <motion.a
           href="mailto:martinchijindu@gmail.com"
